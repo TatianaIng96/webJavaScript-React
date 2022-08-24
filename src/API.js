@@ -17,6 +17,7 @@ const defaultConfig = {
 
 const apiSettings = {
   fetchMovies: async (searchTerm, page) => {
+    console.log("la pagina es... ", page);
     const endpoint = searchTerm
       ? `${SEARCH_BASE_URL}${searchTerm}&page=${page}`
       : `${POPULAR_BASE_URL}&page=${page}`;
@@ -36,6 +37,7 @@ const apiSettings = {
     return reqToken.request_token;
   },
   authenticate: async (requestToken, username, password) => {
+    console.log('el token recibido es...', requestToken);
     const bodyData = {
       username,
       password,
