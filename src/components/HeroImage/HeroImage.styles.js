@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   background-size: 100%, cover;
   background-position: center;
   height: 600px;
-  position: relative:
+  position: relative;
   animation: animateHeroImage 1s;
 
   @keyframes animateHeroImage {
@@ -42,15 +42,15 @@ export const Text = styled.div`
     font-size: var(--fontSuperBig);
 
     @media screen and (max-width: 720px) {
-      font size: var(--fontBig);
+      font-size: var(--fontBig);
     }
   }
 
   p{
-    font size: var(--fontMed);
+    font-size: var(--fontMed);
 
     @media screen and (max-width: 720px){
-      font size: var(--fontSmall);
+      font-size: var(--fontSmall);
     }
   }
 
