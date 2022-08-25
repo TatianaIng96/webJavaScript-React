@@ -5,7 +5,7 @@ import React, {useState,useEffect} from 'react'; // para crear u estato se impor
 import { POSTER_SIZE, BACKDROP_SIZE,IMAGE_BASE_URL} from '../config';  // Tamaño del guion bajo del cartel, Telon de fondo y la url de subrayado de imagen
 
 //Component
-
+import HeroImage from './HeroImage';
 
 
 // Hook
@@ -20,8 +20,18 @@ const Home = () => {
     const {state,loading,error}=useHomeFetch();
 
     console.log(state); 
-
-    return <div> Home Page</div>
+    //imagen de fondo
+    return (
+        <> 
+            {state.results[0] ? (
+                <HeroImage
+                    image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${state.results[0].backdrop_path}`}
+                    title={state.results[0].original_title}
+                    text={state.results[0].overview}
+                />
+            ) : null}
+        </>      
+    );
 };
 
 export default Home;
