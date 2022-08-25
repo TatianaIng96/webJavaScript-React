@@ -27,7 +27,6 @@ export const Content = styled.div`
   padding: 20px;
   max-width: var(--maxWidth);
   margin: 0 auto;
-
 `;
 
 export const Text = styled.div`
