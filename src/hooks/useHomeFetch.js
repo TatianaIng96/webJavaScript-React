@@ -11,10 +11,13 @@ const initialState = {
 };
 //console.log(initialState);
 export const useHomeFetch = () =>{
-  const [state,serState] = useState(initialState); // el estado inicial y el estado de value
+
+  const [searchTerm,setSearchTerm]=useState('');
+  const [state,setState] = useState(initialState); // el estado inicial y el estado de value
   const [loading,setLoading] = useState(false)//
   const[error,setError] = useState(false)// por si se recibe un error de la api
   
+
    //obteniendo la API
   const fetchMovies = async(page,searchTerm = '') => {
     try {
@@ -23,7 +26,7 @@ export const useHomeFetch = () =>{
 
       const movies = await API.fetchMovies(searchTerm,page);
       
-      serState(prev =>({
+      setState(prev =>({
             ...movies,
             results:
             page > 1 ? [...prev.results,...movies.results]: [...movies.results] // matriz de pelis antiguas y nuevas
@@ -41,5 +44,5 @@ export const useHomeFetch = () =>{
       fetchMovies(1);
   },[]);
   
-  return {state,loading,error};
+  return {state,loading,error,setSearchTerm};
 };
