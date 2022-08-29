@@ -1,6 +1,7 @@
 import { useState,useEffect } from 'react';
 import API from '../API';
-////home movie
+// home movie
+
 export const useMovieFetch = movieId => {
   const [state,setState]= useState({});
   const [loading,setLoading]= useState(true);
