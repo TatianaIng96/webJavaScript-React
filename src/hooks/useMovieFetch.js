@@ -1,6 +1,10 @@
 import { useState,useEffect } from 'react';
 import API from '../API';
-// home movie
+<<<<<<< HEAD
+=======
+//helpers
+import { isPersistedState } from '../helpers';
+>>>>>>> react-branch
 
 export const useMovieFetch = movieId => {
   const [state,setState]= useState({});
@@ -31,8 +35,23 @@ export const useMovieFetch = movieId => {
       }
     }
 
+
+    const sessionState=isPersistedState(movieId);
+
+    if(sessionState){
+      setState(sessionState);
+      setLoading(false);
+      return;
+    }
+
     fetchMovie();
   },[movieId]);
+
+  //write to ssessionstorage
+  useEffect(()=> {
+    sessionStorage.setItem(movieId,JSON.stringify(state));
+  },[movieId,state]);
+
 
   return {state,loading,error};
 };
